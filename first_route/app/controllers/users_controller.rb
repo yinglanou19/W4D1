@@ -40,7 +40,7 @@ class UsersController < ApplicationController
         
         unless @user.nil?
             @user.delete
-            render json: "#{@user.name} was deleted"
+            render json: "#{@user.id} was deleted"
         else
             render json: 'User does not exist.', status: :unprocessable_entity
         end  
@@ -49,6 +49,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :email)
+        params.require(:user).permit(:username)
     end
 end

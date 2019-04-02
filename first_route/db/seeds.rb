@@ -6,4 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create( [ {name: 'Jeff', email: 'jeff.dam@gmail.com'}, {name: 'Yinglan', email: 'yinglan@gmail.com'}, {name: 'dog', email: 'dog@gmail.com'}])
+
+users =[]
+10.times do
+    users << User.create({username: Faker::Internet.unique.email})
+end
+
+artworks = []
+10.times do
+    artworks << Artwork.create({title:Faker::FunnyName.unique.name, image_url:"google.com", artist_id: rand(1..10)})
+end
+
+artworks.each do |a|
+    ArtworkShare.create({artwork_id: a.id, viewer_id: users.sample.id})
+end
+
