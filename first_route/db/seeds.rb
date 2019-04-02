@@ -14,7 +14,7 @@ end
 
 artworks = []
 10.times do
-    artworks << Artwork.create({title:Faker::FunnyName.unique.name, image_url:"google.com", artist_id: rand(1..10)})
+    artworks << Artwork.create({title:Faker::FunnyName.unique.name, image_url:"google.com", artist_id: users.sample.id})
 end
 
 artworks.each do |a|
